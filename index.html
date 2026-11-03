@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SailAgent · 每位 Agent 都能扬帆启航 | SAIL 销售进行中</title>
+<meta name="description" content="SailAgent（SAIL）：面向币安 Agent ID 持有者的航海主题社区代币。第一轮免费领取 1 手，之后四轮付费航行，推荐立得 10% BNB。Every agent can set sail.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M32 4 L50 34 L32 30 Z' fill='%2337c8e8'/%3E%3Cpath d='M32 12 L18 34 L32 30 Z' fill='%23d9f6ff'/%3E%3Cpath d='M8 44 Q20 38 32 44 T56 44 L50 54 Q32 60 14 54 Z' fill='%23ffb703'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SailAgent">
+<meta property="og:title" content="SailAgent · 每位 Agent 都能扬帆启航">
+<meta property="og:description" content="SailAgent（SAIL）：Agent ID 持有者专属。第一轮免费 1 手，四轮付费销售，推荐立得 10%。Every agent can set sail.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SailAgent · SAIL">
+<meta name="twitter:description" content="Every agent can set sail. 第一轮免费领取 + 四轮销售，推荐奖励 10% BNB。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=111">
+</head>
+<body>
+
+<div class="sea-bg" aria-hidden="true">
+  <div class="sea-glow"></div>
+  <div class="wave wave-back"></div>
+  <div class="wave wave-front"></div>
+</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#/home" data-page="home" aria-label="SailAgent">
+      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 L50 34 L32 30 Z" fill="#37c8e8"/><path d="M32 12 L18 34 L32 30 Z" fill="#d9f6ff"/><path d="M8 44 Q20 38 32 44 T56 44 L50 54 Q32 60 14 54 Z" fill="#ffb703"/></svg>
+      <span class="brand-name">SailAgent</span>
+    </a>
+    <nav class="nav-menu" id="navMenu" aria-label="Pages">
+      <a href="#/home" data-page="home" data-i18n="navHome">首页</a>
+      <a href="#/buy" data-page="buy" data-i18n="navBuy">领取 / 购买</a>
+      <a href="#/pixels" data-page="pixels" data-i18n="navPx">像素帆船</a>
+      <a href="#/referral" data-page="referral" data-i18n="navRef">推荐</a>
+      <a href="#/tokenomics" data-page="tokenomics" data-i18n="navTok">代币经济学</a>
+      <a href="#/guide" data-page="guide" data-i18n="navGuide">玩法指南</a>
+      <a href="#/faq" data-page="faq" data-i18n="navFaq">常见问题</a>
+      <a href="#/whitepaper" data-page="whitepaper" data-i18n="navWp">白皮书</a>
+    </nav>
+    <div class="nav-right">
+      <span class="lang-switch" role="group" aria-label="Language">
+        <button type="button" id="langZh" class="lang-btn active">中文</button>
+        <button type="button" id="langEn" class="lang-btn">EN</button>
+      </span>
+      <a class="btn btn-primary small" id="headerCta" href="#/buy" data-page="buy" data-scroll="claimCard">免费领取</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navMenu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================= PAGE: HOME ============================= -->
+<main class="page" id="page-home">
+  <div class="hero">
+    <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="sec-kicker" data-i18n="heroKicker">BNB Smart Chain · Agent ID 专属</div>
+          <h1 data-i18n="heroH1">每位 Agent，<br>都能<span class="light">扬帆启航</span>。</h1>
+          <p class="slogan">Every agent can set sail.</p>
+          <p class="intro" data-i18n="heroIntro">SailAgent（SAIL）是面向币安 Agent ID 持有者的航海主题代币。第一轮免费领取 1 手，其后四轮付费销售；销售所得的 70% 将注入流动性池，推荐人立得 10% BNB。</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#/buy" data-page="buy" data-i18n="heroCta1">领取 / 购买 SAIL</a>
+            <a class="btn btn-ghost" href="#/referral" data-page="referral" data-i18n="heroCta2">赚取推荐奖励</a>
+          </div>
+          <p class="hero-note" id="heroStatus" data-i18n="heroLoading">正在读取链上状态…</p>
+        </div>
+        <div class="hero-art">
+          <div class="ship-stage" id="shipStage"></div>
+          <p class="ship-hint" data-i18n="shipHint">郑和宝船 · 扬帆起航，乘风破浪</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num">1,000,000,000</div><div class="lbl" data-i18n="statSupply">总供应量 SAIL</div></div>
+        <div class="stat"><div class="num">100,000</div><div class="lbl" data-i18n="statLot">每手 SAIL 数量</div></div>
+        <div class="stat"><div class="num">5</div><div class="lbl" data-i18n="statRounds">销售轮次 · 第 1 轮含免费领取</div></div>
+        <div class="stat"><div class="num" data-i18n="statHours">12 小时</div><div class="lbl" data-i18n="statPer">每轮限时</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="live">
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kLive">实时数据</div>
+      <h2 class="sec-title" data-i18n="liveTitle">船队现在航行到哪里了。</h2>
+      <p class="sec-sub" data-i18n="liveNote">以下数据全部直接读取链上合约，每 30 秒自动刷新。</p>
+      <div class="cards">
+        <div class="card">
+          <h3><span data-i18n="saleT">销售状态</span> <span class="badge soon" id="saleBadge">…</span></h3>
+          <div class="big" id="saleRound">—</div>
+          <p id="saleLine1">—</p>
+          <p id="saleLine2">—</p>
+          <p id="liveUpdated" class="upd"></p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="freeT">第 1 轮免费领取</h3>
+          <div class="big"><span id="freeNum">—</span> <small>/ 1,000 <span data-i18n="lotsUnit">手</span></small></div>
+          <div class="progress"><i id="freeBar"></i></div>
+          <p data-i18n="freeDesc">每个 Agent ID 在第 1 轮可免费领取 1 手（100,000 SAIL），先到先得，领完即止。</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="raisedT">累计募集</h3>
+          <div class="big"><span id="raisedNum">—</span> <small>BNB</small></div>
+          <p data-i18n="raisedDesc">付费购买的 BNB 实时按 70% 锁定为流动性资金、10% 付推荐人、5% 运营、15% 储备。</p>
+          <p id="poolFundLine">—</p>
+        </div>
+      </div>
+      <div class="cards cards-2">
+        <div class="card">
+          <h3 data-i18n="balT">合约库存</h3>
+          <ul class="pools">
+            <li><span data-i18n="balSale">销售合约 SAIL 余额</span><b id="balSale">—</b></li>
+            <li><span data-i18n="balTrade">代币转账状态</span><b id="balTrade">—</b></li>
+          </ul>
+          <p data-i18n="balNote">SAIL 在流动性池开启前处于锁定状态：只能由销售合约分发，不能转账或交易。</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="poolT">流动性池计划</h3>
+          <p data-i18n="poolDesc">五轮销售结束后开池：以募集 BNB 的 70% 与 150,000,000 SAIL 在 PancakeSwap V3 建池，建池同时开启转账与交易。</p>
+          <p id="poolState">—</p>
+        </div>
+      </div>
+      <div class="cards cards-2">
+        <div class="card" id="cdCard" style="display:none">
+          <h3 data-i18n="cdT">本轮倒计时</h3>
+          <div class="big cd-time" id="cdTime">--:--:--</div>
+          <p id="cdLabel">—</p>
+          <p data-i18n="cdNote">本轮将在售罄或 12 小时到期时关闭。</p>
+          <p class="upd" id="cdEnds"></p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="campT">总进度</h3>
+          <div class="big"><span id="campNum">—</span> <small>/ 7,000 <span data-i18n="lotsUnit">手</span></small></div>
+          <div class="progress"><i id="campBar"></i></div>
+          <p id="campLine">—</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="board">
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kBoard">排行榜与动态</div>
+      <h2 class="sec-title" data-i18n="boardTitle">谁在领航。</h2>
+      <p class="sec-sub" data-i18n="boardSub">排行榜与最新动态直接读取销售合约的链上事件（领取、购买、推荐奖励），与合约状态同步。</p>
+      <p style="margin-top:14px"><button class="btn btn-ghost small tap" id="boardRefreshBtn" type="button" data-i18n="boardRefresh">刷新</button> <span class="hint" id="boardNote" role="status"></span></p>
+      <div class="cards cards-2 board-grid">
+        <div class="card">
+          <h3 data-i18n="buyersT">购买排行榜</h3>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th scope="col" data-i18n="thRank">#</th><th scope="col" data-i18n="thAddr">地址</th><th scope="col" class="num" data-i18n="thLots">手数</th><th scope="col" class="num" data-i18n="thSail">SAIL</th></tr></thead>
+              <tbody id="buyersBody"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="refsT">推荐排行榜</h3>
+          <div class="tbl-wrap">
+            <table class="tbl">
+              <thead><tr><th scope="col" data-i18n="thRank">#</th><th scope="col" data-i18n="thAddr">地址</th><th scope="col" class="num" data-i18n="thInv">邀请人数</th><th scope="col" class="num" data-i18n="thEarn">已赚 BNB</th></tr></thead>
+              <tbody id="refsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h3 data-i18n="actT">最新动态</h3>
+        <div id="actList" class="act-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rounds">
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kRounds">销售轮次</div>
+      <h2 class="sec-title" data-i18n="roundsTitle">五轮航程，五种鱼。</h2>
+      <p class="sec-sub" data-i18n="roundsSub">每轮有自己的吉祥物鱼：鱼越大，航程越深。每手 = 100,000 SAIL；每轮每钱包最多购买 10 手。价格为合约常量，部署后不可更改。</p>
+      <div class="cards round-cards" id="homeRoundCards"></div>
+    </div>
+  </section>
+
+  <section id="tokTeaser">
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kTok">代币分配</div>
+      <h2 class="sec-title" data-i18n="tokTeaserTitle">总量 1,000,000,000，团队 0。</h2>
+      <div class="alloc alloc-mini">
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc1">销售轮次<span>5 轮 · 7,000 手（1,000 免费 + 6,000 付费）</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="amt">700,000,000<span>70%</span></div>
+        </div>
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc2">流动性池<span>与募集 BNB 的 70% 配对建池</span></div>
+          <div class="bar"><i style="width:15%"></i></div>
+          <div class="amt">150,000,000<span>15%</span></div>
+        </div>
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc3">生态<span>社区与生态建设</span></div>
+          <div class="bar"><i style="width:5%"></i></div>
+          <div class="amt">50,000,000<span>5%</span></div>
+        </div>
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc4">储备<span>项目储备金</span></div>
+          <div class="bar"><i style="width:10%"></i></div>
+          <div class="amt">100,000,000<span>10%</span></div>
+        </div>
+      </div>
+      <p style="margin-top:18px"><a class="btn btn-ghost small" href="#/tokenomics" data-page="tokenomics" data-i18n="tokMore">完整代币经济学 →</a></p>
+    </div>
+  </section>
+
+  <section id="market">
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kMarket">代币市场</div>
+      <h2 class="sec-title" data-i18n="tokMktT">SAIL 市场</h2>
+      <div class="card" style="margin-top:24px">
+        <div id="mktPre">
+          <p data-i18n="tokMktPre">SAIL 的池子尚未开启。每笔付费购买的 70% 都留存在销售合约中作为池资金；五轮销售全部结束后，这笔 BNB 将与 150,000,000 SAIL 一起在 PancakeSwap V3 建池，交易随即开启。</p>
+          <ul class="pools">
+            <li><span data-i18n="mktFundL">已累计池资金（70%）</span><b id="mktFund">—</b></li>
+            <li><span data-i18n="mktRaisedL">累计募集</span><b id="mktRaised">—</b></li>
+            <li><span data-i18n="mktStateL">状态</span><b id="mktState">—</b></li>
+          </ul>
+        </div>
+        <div id="mktPost" style="display:none">
+          <p data-i18n="tokMktLive">SAIL 已在 PancakeSwap V3 上线。可以直接交易，或查看实时图表。</p>
+          <ul class="pools">
+            <li><span data-i18n="mktPriceL">价格（USD）</span><b id="mktPrice">—</b></li>
+            <li><span data-i18n="mktLiqL">流动性（USD）</span><b id="mktLiq">—</b></li>
+            <li><span data-i18n="mktVolL">24 小时成交量（USD）</span><b id="mktVol">—</b></li>
+          </ul>
+          <p id="mktPoolLine" class="hint" style="margin-top:10px"></p>
+          <p style="margin-top:10px"><a class="btn btn-primary small tap" id="mktTradeBtn" href="#" target="_blank" rel="noopener" data-i18n="tokMktBtn1">在 PancakeSwap 交易</a> <a class="btn btn-ghost small tap" id="mktDsBtn" href="#" target="_blank" rel="noopener" data-i18n="tokMktBtn2">打开 DexScreener</a></p>
+          <div class="tok-chart" id="mktChart"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="steps">
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kSteps">怎么参与</div>
+      <h2 class="sec-title" data-i18n="stepsTitle">三步登船。</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="no">01 / ID</div>
+          <h3 data-i18n="step1T">准备 Agent ID</h3>
+          <p data-i18n="step1D">你需要一个币安 Agentic Wallet 里的 Agent ID（.ai handle），再备一点 BNB 作 gas。免费领取只认 Agent ID 持有人。</p>
+        </div>
+        <div class="step">
+          <div class="no" data-i18n="stepNo2">02 / 连接</div>
+          <h3 data-i18n="step2T">连接钱包并领取 / 购买</h3>
+          <p data-i18n="step2D">在本站连接钱包（BNB Smart Chain）。第 1 轮先免费领取 1 手，也可以按本轮价格继续购买；之后每轮开放时购买。</p>
+        </div>
+        <div class="step">
+          <div class="no" data-i18n="stepNo3">03 / 开池</div>
+          <h3 data-i18n="step3T">等开池后自由交易</h3>
+          <p data-i18n="step3D">销售结束即开池。开池前 SAIL 锁定不可转账；开池后可在 PancakeSwap 自由交易。</p>
+        </div>
+      </div>
+      <p style="margin-top:18px"><a class="btn btn-ghost small" href="#/guide" data-page="guide" data-i18n="stepsMore">查看完整玩法指南 →</a></p>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= PAGE: BUY ============================= -->
+<main class="page" id="page-buy">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kBuy">领取 / 购买</div>
+      <h2 class="sec-title" data-i18n="buyTitle">登上这艘船。</h2>
+      <p class="sec-sub" data-i18n="buySub">本站直接连接你的钱包调用链上合约。所有数字都是实时读取；轮次未开启时按钮会自动禁用。</p>
+
+      <div class="cards cards-2">
+        <div class="card" id="walletCard">
+          <h3 data-i18n="walletT">我的钱包</h3>
+          <div id="walletOff">
+            <p data-i18n="walletOffD">尚未连接钱包。连接后可查看你的领取资格、SAIL 余额与本轮购买记录。</p>
+            <p style="margin-top:10px"><button class="btn btn-primary small" id="connectBtn2" type="button" data-i18n="connect">连接钱包</button></p>
+          </div>
+          <div id="walletOn" style="display:none">
+            <ul class="pools">
+              <li><span data-i18n="wAddr">地址</span><b id="wAddr">—</b></li>
+              <li><span data-i18n="wNet">网络</span><b id="wNet">—</b></li>
+              <li><span>SAIL</span><b id="wSail">—</b></li>
+              <li><span>BNB</span><b id="wBnb">—</b></li>
+              <li><span data-i18n="wIds">持有的 Agent ID 数量</span><b id="wIds">—</b></li>
+            </ul>
+            <p id="wRefNote" class="ref-note" style="display:none"></p>
+          </div>
+        </div>
+
+        <div class="card" id="claimCard">
+          <h3><span data-i18n="claimT">免费领取 · 第 1 轮</span> <span class="badge soon" id="claimBadge">…</span></h3>
+          <p data-i18n="claimD">每个 Agent ID 可免费领取 1 手（100,000 SAIL），共 1,000 个名额。输入你的 Agent ID handle 核对资格：</p>
+          <div class="share-row">
+            <input type="text" id="handleInput" data-i18n-ph="handlePh" placeholder="例如：yourhandle" autocomplete="off" spellcheck="false">
+            <button class="btn btn-ghost small" id="checkIdBtn" type="button" data-i18n="checkId">核对</button>
+          </div>
+          <div id="claimOut" style="margin-top:10px"></div>
+          <p style="margin-top:10px"><button class="btn btn-primary" id="claimBtn" type="button" disabled data-i18n="claimBtn">免费领取 1 手</button></p>
+          <p class="hint" data-i18n="claimHint">领取只需支付 gas，SAIL 直接发到你的钱包。</p>
+        </div>
+      </div>
+
+      <div class="card" id="mintCard" style="margin-top:22px">
+        <h3><span data-i18n="mintT">购买本轮</span> <span class="badge soon" id="mintBadge">…</span></h3>
+        <div class="mint-grid">
+          <div>
+            <ul class="pools">
+              <li><span data-i18n="mRound">当前轮次</span><b id="mRound">—</b></li>
+              <li><span data-i18n="mPrice">本轮价格</span><b id="mPrice">—</b></li>
+              <li><span data-i18n="mLeft">本轮剩余</span><b id="mLeft">—</b></li>
+              <li><span data-i18n="mMine">我已购买（本轮）</span><b id="mMine">—</b></li>
+            </ul>
+          </div>
+          <div>
+            <label class="fld-label" data-i18n="mLots">购买手数（1 手 = 100,000 SAIL）</label>
+            <div class="stepper">
+              <button type="button" id="lotMinus" class="step-btn" aria-label="minus">−</button>
+              <input type="number" id="lotInput" value="1" min="1" max="10" step="1">
+              <button type="button" id="lotPlus" class="step-btn" aria-label="plus">+</button>
+            </div>
+            <label class="fld-label" data-i18n="mRef">推荐人地址（可选）</label>
+            <input type="text" id="refInput" data-i18n-ph="refPh" placeholder="0x… 推荐人钱包地址" autocomplete="off" spellcheck="false">
+            <p class="hint" data-i18n="mRefHint">填写后，推荐人立即获得你付款的 10%（BNB）。通过推荐链接打开本站时会自动填入。</p>
+            <div class="cost-line"><span data-i18n="mCost">应付</span><b id="mCost">—</b></div>
+            <p style="margin-top:8px"><button class="btn btn-primary" id="mintBtn" type="button" disabled data-i18n="mintBtn">购买</button></p>
+            <div id="mintOut" style="margin-top:8px"></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub-h" data-i18n="roundCardsT">全部轮次</h3>
+      <div class="cards round-cards" id="buyRoundCards"></div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 data-i18n="myLotsT">我的各轮购买</h3>
+        <ul class="pools" id="myLotsList">
+          <li><span data-i18n="myLotsOff">连接钱包后显示你每一轮已购买的手数。</span><b>—</b></li>
+        </ul>
+      </div>
+
+      <div class="sec-kicker" style="margin-top:38px" data-i18n="kAgent">Agent 指南</div>
+      <h3 class="sub-h" style="margin-top:0" data-i18n="agentTitle">让你的 Agent 替你完成。</h3>
+      <p class="sec-sub" data-i18n="agentSub">不用在这里连接钱包：把下面任意一段指令复制到你的币安 Agent（Agentic Wallet），它会替你执行链上调用。凡是付费步骤，Agent 必须先把确切的 BNB 金额展示给你、等你确认后才能执行。</p>
+
+      <div class="card" style="margin-top:16px">
+        <h3 data-i18n="agentFreeT">只领免费 1 手（不花 BNB）</h3>
+        <pre class="prompt-box" id="agentFreeText" data-i18n="agentFreeText">请帮我在 SailAgent 领取第 1 轮的免费 1 手 SAIL（只领免费，不要付费购买）：
+1. 在 BNB Smart Chain（chainId 56）确认我的钱包持有我的 Agent ID；agentId = uint256(keccak256("我的 handle，不带 .ai 后缀"))。
+2. 只读检查销售合约 0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA：currentRound() 必须为 1，freeClaimedByAgent(agentId) 必须为 false，注册表 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F 的 ownerOf(agentId) 必须等于我的钱包地址。
+3. 用 baw 对 claim(agentId) 先 preview（value 0，gas limit 600000），把预览结果给我看；我确认后才 execute。完成后把交易哈希发给我。</pre>
+        <p style="margin-top:10px"><button class="btn btn-ghost small tap" id="copyAgentFree" type="button" data-i18n="copyBtn">复制</button></p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 data-i18n="agentBuyT">购买付费手数（Agent 必须先与你确认金额）</h3>
+        <pre class="prompt-box" id="agentBuyText" data-i18n="agentBuyText">请帮我在 SailAgent 购买 SAIL（付费，务必先让我确认金额）：
+1. 先只读查询销售合约 0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA 的 currentRound() 与 priceOf(当前轮次)，算出总价 = 手数 × 本轮单价（第 1 轮 0.001 BNB / 手），把总价用 BNB 明明白白展示给我。
+2. 调用 mint(手数, 推荐人地址)——没有推荐人就填零地址 0x0000000000000000000000000000000000000000；value 必须正好等于总价，gas limit 600000。
+3. 先用 baw preview 把确切金额给我看，等我明确确认后才 execute；我没确认就绝不要付款。完成后把交易哈希发给我。</pre>
+        <p style="margin-top:10px"><button class="btn btn-ghost small tap" id="copyAgentBuy" type="button" data-i18n="copyBtn">复制</button></p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
+        <h3 data-i18n="agentSkillT">安装 SailAgent 技能</h3>
+        <p data-i18n="agentSkillD">一段指令即可把 SailAgent 官方技能文件装进你的 Agent；之后它会记住全部合约地址、检查步骤与安全规则。</p>
+        <pre class="prompt-box" id="skillPromptText" data-i18n="skillPromptText">请打开并安装 SailAgent 的官方技能文件：
+https://sailagent.vercel.app/skill.md
+把它保存为你的一个 skill，然后严格按里面的流程帮我参与 SailAgent（免费领取 / 付费购买）：每笔交易先预览，付费前把确切 BNB 金额展示给我并等我确认；只认 skill.md 里写明的官方合约地址。</pre>
+        <p style="margin-top:10px"><button class="btn btn-ghost small tap" id="copySkillPrompt" type="button" data-i18n="copyBtn">复制</button></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= PAGE: SAILPIXELS ============================= -->
+<main class="page" id="page-pixels">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="pxKicker">SailPixels · NFT 系列</div>
+      <h2 class="sec-title" data-i18n="pxTitle">5,555 艘像素帆船，抽到哪艘看运气。</h2>
+      <p class="sec-sub" data-i18n="pxSub">SailPixels 是 SailAgent 旗下的像素帆船 NFT 系列：共 5,555 艘，分 5 期铸造。每次铸造都是一次抽选——稀有度从剩余奖池中随机抽出，成交即揭晓（自动揭示）。第 1 期每钱包首艘免费，其余按本期单价付费。</p>
+      <div class="px-hero"><img src="sailpixels/armada.webp" alt="SailPixels — the pixel fleet"></div>
+      <div class="px-chips" id="pxChips"></div>
+
+      <h3 class="sub-h" data-i18n="pxGalT">五种稀有度</h3>
+      <div class="cards px-gallery" id="pxGallery"></div>
+
+      <div class="card" id="pxMintCard" style="margin-top:22px">
+        <h3><span data-i18n="pxMintT">铸造</span> <span class="badge soon" id="pxMintBadge">…</span></h3>
+        <div class="mint-grid">
+          <div>
+            <ul class="pools">
+              <li><span data-i18n="pxLPhase">当前期数</span><b id="pxPhase">—</b></li>
+              <li><span data-i18n="pxLPhaseMinted">本期已铸造</span><b id="pxPhaseMinted">—</b></li>
+              <li><span data-i18n="pxLTotal">全系列已铸造</span><b id="pxTotal">—</b></li>
+              <li><span data-i18n="pxLPrice">本期单价</span><b id="pxPrice">—</b></li>
+              <li><span data-i18n="pxLMine">我本期已铸造</span><b id="pxMine">—</b></li>
+              <li><span data-i18n="pxLFree">第 1 期免费额度</span><b id="pxFree">—</b></li>
+            </ul>
+            <div class="progress"><i id="pxPhaseBar"></i></div>
+          </div>
+          <div>
+            <label class="fld-label" data-i18n="pxQtyL">铸造数量</label>
+            <div class="stepper">
+              <button type="button" id="pxQtyMinus" class="step-btn" aria-label="minus">−</button>
+              <input type="number" id="pxQtyInput" value="1" min="1" max="10" step="1">
+              <button type="button" id="pxQtyPlus" class="step-btn" aria-label="plus">+</button>
+            </div>
+            <div class="cost-line"><span data-i18n="mCost">应付</span><b id="pxCost">—</b></div>
+            <p class="hint" id="pxCostNote"></p>
+            <p style="margin-top:8px"><button class="btn btn-primary" id="pxMintBtn" type="button" disabled data-i18n="pxMintBtn">铸造</button></p>
+            <div id="pxMintOut" style="margin-top:8px"></div>
+            <p class="hint" data-i18n="pxMintNote">钱包在购买页连接；连接后这里会按你的钱包实时计算价格。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:22px">
+        <h3 data-i18n="pxMktT">市场</h3>
+        <p data-i18n="pxMktNote">本站内市场：成交手续费 10%（归项目方），卖家到手 90%。最低挂单价 0.001 BNB。挂单为非托管——NFT 仍留在你的钱包里，成交时才转出，请勿取消对市场合约的授权。</p>
+        <p style="margin-top:10px"><button class="btn btn-ghost small tap" id="pxMktRefresh" type="button" data-i18n="boardRefresh">刷新</button> <span class="hint" id="pxMktNote2" role="status"></span></p>
+        <div class="px-mkt-grid" id="pxListings"></div>
+      </div>
+
+      <div class="cards cards-2" style="margin-top:22px">
+        <div class="card">
+          <h3 data-i18n="pxMyT">我的帆船</h3>
+          <div id="pxMyBody"><p class="hint" data-i18n="pxMyOff">连接钱包后，这里会显示你持有的 SailPixels。</p></div>
+          <p style="margin-top:10px"><button class="btn btn-ghost small" id="pxScanBtn" type="button" data-i18n="pxScanBtn">扫描我的 NFT</button></p>
+          <div id="pxMyListings"></div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="pxListT">上架出售</h3>
+          <label class="fld-label" data-i18n="pxListTokenL">NFT 编号</label>
+          <input type="number" id="pxListToken" min="1" step="1" data-i18n-ph="pxTokenPh" placeholder="例如：12">
+          <label class="fld-label" data-i18n="pxListPriceL">价格（BNB，最低 0.001）</label>
+          <input type="text" id="pxListPrice" data-i18n-ph="pxPricePh" placeholder="0.001" inputmode="decimal" autocomplete="off" spellcheck="false">
+          <p style="margin-top:12px"><button class="btn btn-primary" id="pxListBtn" type="button" data-i18n="pxListBtn">上架</button></p>
+          <div id="pxListOut" style="margin-top:8px"></div>
+          <p class="hint" data-i18n="pxListNote">上架前会核对持有权；若市场合约未获授权，会先请你发一笔授权交易。成交后你到手 90%。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= PAGE: REFERRAL ============================= -->
+<main class="page" id="page-referral">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kRef">推荐计划</div>
+      <h2 class="sec-title" data-i18n="refTitle">邀请朋友登船，你立得 10%。</h2>
+      <p class="sec-sub" data-i18n="refSub">朋友通过你的链接购买 SAIL 时，在购买交易里填入你的钱包地址作为推荐人——你立即收到其付款金额 10% 的 BNB，由合约在同一笔交易中支付，全程链上可查。</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3 data-i18n="refHowT">推荐人资格</h3>
+          <ol class="req-list">
+            <li><span data-i18n="req1">关注官方 X 账号</span> <a class="btn btn-ghost small" id="xFollowBtn" href="https://x.com/SailAgents" target="_blank" rel="noopener" data-i18n="req1Btn">关注 @SailAgents</a></li>
+            <li data-i18n="req2">给置顶帖点赞并转发（RT）</li>
+            <li data-i18n="req3">发一条带 $SAIL 话题的 X 帖子</li>
+            <li data-i18n="req4">完成后，你的推荐链接即刻生效——把链接发给朋友即可</li>
+          </ol>
+          <p class="hint" data-i18n="reqNote">技术说明：合约按购买时填入的推荐人地址即时付款，不做链下审核；上面的任务是本项目的推荐激活规则，请先完成再推广。</p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="refLinkT">我的推荐链接</h3>
+          <p data-i18n="refLinkD">输入你的钱包地址（或连接钱包）生成专属链接。朋友打开链接购买时，推荐人会自动填成你。</p>
+          <div class="share-row">
+            <input type="text" id="refAddrInput" data-i18n-ph="refAddrPh" placeholder="0x 你的钱包地址" autocomplete="off" spellcheck="false">
+            <button class="btn btn-primary small" id="genRefBtn" type="button" data-i18n="genRef">生成链接</button>
+          </div>
+          <div class="share-row" style="margin-top:8px">
+            <input type="text" id="refLinkOut" readonly data-i18n-ph="refLinkPh" placeholder="推荐链接会生成在这里">
+            <button class="btn btn-ghost small" id="copyRefBtn" type="button" data-i18n="copyBtn">复制</button>
+          </div>
+          <p style="margin-top:10px">
+            <button class="btn btn-primary small tap" id="shareXBtn" type="button">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.9 2.1h3.4l-7.4 8.5 8.7 11.3h-6.8l-5.3-6.9-6.1 6.9H2l7.9-9.1L1.6 2.1h7l4.8 6.3 5.5-6.3zm-1.2 17.8h1.9L7.1 4H5.1l12.6 15.9z"/></svg>
+              <span data-i18n="shareX">分享到 X</span>
+            </button>
+            <button class="btn btn-square small tap" id="shareSquareBtn" type="button">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.5 15.2 5.7 12 8.9 8.8 5.7Z M5.7 8.8 8.9 12 5.7 15.2 2.5 12Z M18.3 8.8 21.5 12 18.3 15.2 15.1 12Z M12 15.1 15.2 18.3 12 21.5 8.8 18.3Z M12 9.6 14.4 12 12 14.4 9.6 12Z"/></svg>
+              <span data-i18n="shareSquare">分享到币安广场</span>
+            </button>
+          </p>
+          <p class="hint" data-i18n="shareXNote">通过此按钮发帖，即完成推荐人激活任务中的「发一条带 $SAIL 的帖子」一步；关注、点赞与转发仍需在 X 上手动完成。</p>
+          <p class="hint" data-i18n="shareSquareNote">分享到币安广场：点击后先把分享文案复制到剪贴板，再打开币安广场——在发帖框里粘贴即可。</p>
+          <textarea id="shareText" rows="3" readonly data-i18n-ph="sharePh" placeholder="分享文案会生成在这里"></textarea>
+          <p style="margin-top:8px"><button class="btn btn-ghost small" id="copyShareBtn" type="button" data-i18n="copyShare">复制分享文案</button></p>
+        </div>
+        <div class="card">
+          <h3 data-i18n="refEarnT">我的推荐收益</h3>
+          <div class="big"><span id="refEarnNum">—</span> <small>BNB</small></div>
+          <p id="refEarnCount">—</p>
+          <div id="refEarnList" style="margin-top:8px"></div>
+          <p class="hint" data-i18n="refEarnNote">数据来自合约 ReferralPaid 事件，实时读取链上日志。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================= PAGE: FAQ ============================= -->
+<main class="page" id="page-tokenomics">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kTok">代币分配</div>
+      <h2 class="sec-title" data-i18n="tokTitle">总量 1,000,000,000，一次分清。</h2>
+      <p class="sec-sub" data-i18n="tokSub">固定供应，部署时一次铸造完毕，不可增发。销售所得 BNB 在每笔购买时即按比例分配，全部链上可查。</p>
+      <div class="alloc">
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc1">销售轮次<span>5 轮 · 7,000 手（1,000 免费 + 6,000 付费）</span></div>
+          <div class="bar"><i style="width:70%"></i></div>
+          <div class="amt">700,000,000<span>70%</span></div>
+        </div>
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc2">流动性池<span>与募集 BNB 的 70% 配对建池</span></div>
+          <div class="bar"><i style="width:15%"></i></div>
+          <div class="amt">150,000,000<span>15%</span></div>
+        </div>
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc3">生态<span>社区与生态建设</span></div>
+          <div class="bar"><i style="width:5%"></i></div>
+          <div class="amt">50,000,000<span>5%</span></div>
+        </div>
+        <div class="alloc-row">
+          <div class="name" data-i18n="alloc4">储备<span>项目储备金</span></div>
+          <div class="bar"><i style="width:10%"></i></div>
+          <div class="amt">100,000,000<span>10%</span></div>
+        </div>
+      </div>
+      <div class="split-chips">
+        <div class="chip"><b>70%</b><span data-i18n="split1">销售所得 → 流动性池</span></div>
+        <div class="chip"><b>10%</b><span data-i18n="split2">销售所得 → 推荐人（即时到账）</span></div>
+        <div class="chip"><b>5%</b><span data-i18n="split3">销售所得 → 运营</span></div>
+        <div class="chip"><b>15%</b><span data-i18n="split4">销售所得 → 储备</span></div>
+        <div class="chip"><b>0</b><span data-i18n="split6">团队分配</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main class="page" id="page-guide">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kHow">完整玩法</div>
+      <h2 class="sec-title" data-i18n="howTitle">从领 ID 到开池，一次讲清。</h2>
+      <div class="steps steps-4">
+        <div class="step"><div class="no">01</div><h3 data-i18n="how1T">拿到 Agent ID</h3><p data-i18n="how1D">在币安 App 里创建 Agentic Wallet 并注册 .ai handle（3–15 个字符，a-z 与 0-9）。没有 Agent ID 就无法免费领取。</p></div>
+        <div class="step"><div class="no">02</div><h3 data-i18n="how2T">连接钱包</h3><p data-i18n="how2D">点页面右上角「连接钱包」，切换到 BNB Smart Chain。建议钱包里留少量 BNB 作 gas 与购买款。</p></div>
+        <div class="step"><div class="no">03</div><h3 data-i18n="how3T">第 1 轮先免费领</h3><p data-i18n="how3D">第 1 轮开放后，在购买页输入你的 handle 核对资格，点「免费领取 1 手」。每个 Agent ID 限领一次，共 1,000 个名额。</p></div>
+        <div class="step"><div class="no">04</div><h3 data-i18n="how4T">按轮购买</h3><p data-i18n="how4D">第 1 轮也可以付费购买（0.001 BNB / 手）。之后第 2–5 轮依次开放，价格逐步提高；每轮每钱包最多 10 手。</p></div>
+        <div class="step"><div class="no">05</div><h3 data-i18n="how5T">邀请赚 10%</h3><p data-i18n="how5D">完成关注、点赞、转发与发帖任务后，把你的推荐链接发给朋友。他们购买时你立即得到付款的 10%（BNB）。</p></div>
+        <div class="step"><div class="no">06</div><h3 data-i18n="how6T">开池与交易</h3><p data-i18n="how6D">五轮结束后开池：70% 募集 BNB + 150,000,000 SAIL 建池，同一时刻解锁转账。</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main class="page" id="page-faq">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kFaq">常见问题</div>
+      <h2 class="sec-title" data-i18n="faqTitle">快问快答。</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ1">参与需要什么？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA1">一个币安 Agentic Wallet（内含 Agent ID），连接钱包时使用 BNB Smart Chain。免费领取只对 Agent ID 持有人开放；付费购买不限 ID，但需要 BNB 付款。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ2">免费领取有什么规则？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA2">只在第 1 轮：每个 Agent ID 免费领 1 手（100,000 SAIL），全网共 1,000 手。领取时合约会核对该 Agent ID 的持有人就是你本人，领过一次即不可再领。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ3">每轮价格和上限是多少？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA3">第 1 轮 0.001 BNB（2,000 手付费额度 + 1,000 手免费）；第 2 轮 0.002（1,500 手）；第 3 轮 0.003（1,000 手）；第 4 轮 0.004（800 手）；第 5 轮 0.005（700 手）。每轮每钱包最多买 10 手。价格与额度都是合约常量，不会更改。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ4">买到的 SAIL 为什么不能转账？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA4">开池前 SAIL 处于锁定状态：只有销售合约能分发，持有人之间不能转账、不能在任何市场交易。这是为了让价格只从官方流动性池开始。开池动作会永久解锁转账。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ5">推荐奖励怎么结算？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA5">朋友购买时在推荐人一栏填你的地址（或通过你的推荐链接自动填入），合约在同一笔交易里把其付款的 10% 以 BNB 直接打给你，不需要申请提现。没有推荐人时，这 10% 归入储备。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ7">安全吗？会不会要我的私钥？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA7">本站只通过浏览器钱包发起标准合约调用，永远不会索要助记词或私钥——向你索要的人都是骗子。合约地址只以本官网页脚公布的为准，操作前请核对。</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" type="button"><span data-i18n="faqQ8">SAIL 有什么价值？</span><span class="sign">+</span></button>
+          <div class="faq-a"><div data-i18n="faqA8">SailAgent 是社区实验代币，不承诺任何价值、收益或流动性，价格可以归零。全部规则写在公开合约与本文档里，请自行评估风险。</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<main class="page" id="page-whitepaper">
+  <section>
+    <div class="wrap">
+      <div class="sec-kicker" data-i18n="kWp">白皮书</div>
+      <h2 class="sec-title" data-i18n="wpTitle">SailAgent 白皮书</h2>
+      <p class="sec-sub" data-i18n="wpSub">本白皮书说明 SailAgent（SAIL）的代币规则、销售机制与开池安排。文中所有数字都与部署在 BNB Smart Chain 上的合约保持一致；如有出入，以合约代码为准。</p>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp1T">1 · 概述</h3>
+        <p class="wp-p" data-i18n="wp1D">SailAgent（SAIL）是一个以郑和宝船队远洋航海为主题的社区代币，面向币安 Agent ID 持有者。项目没有团队预留：代币总量在部署时一次铸造完毕，绝大部分通过五轮公开销售分发。第 1 轮设有免费领取额度，让 Agent ID 持有者零成本上船；每笔销售所得按固定比例在链上即时分配，其中 70% 累积为流动性资金，五轮结束后与预留的 SAIL 一起在 PancakeSwap V3 建池。</p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp2T">2 · 代币规格</h3>
+        <ul class="pools">
+          <li><span data-i18n="wpSymL">代币符号</span><b>SAIL</b></li>
+          <li><span data-i18n="wpSupL">总供应量</span><b>1,000,000,000</b></li>
+          <li><span data-i18n="wpDecL">小数位数</span><b>18</b></li>
+          <li><span data-i18n="wpMintL">铸造方式</span><b data-i18n="wpMintV">部署时一次铸造完毕，不可增发</b></li>
+          <li><span data-i18n="wpChainL">网络</span><b>BNB Smart Chain</b></li>
+          <li><span data-i18n="wpTokL">代币合约</span><b><a href="https://bscscan.com/token/0x4f818743bE660eCDaE5ccFFC4d2E2494fE96F19c" target="_blank" rel="noopener">0x4f818743bE660eCDaE5ccFFC4d2E2494fE96F19c</a></b></li>
+          <li><span data-i18n="wpSaleL">销售合约</span><b><a href="https://bscscan.com/address/0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA" target="_blank" rel="noopener">0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA</a></b></li>
+          <li><span data-i18n="wpVerL">源码验证</span><b><a href="https://sourcify.dev/#/lookup/0x4f818743bE660eCDaE5ccFFC4d2E2494fE96F19c" target="_blank" rel="noopener" data-i18n="wpLSrcT">Sourcify · 代币</a> · <a href="https://sourcify.dev/#/lookup/0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA" target="_blank" rel="noopener" data-i18n="wpLSrcS">Sourcify · 销售合约</a></b></li>
+        </ul>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp3T">3 · 代币分配</h3>
+        <p class="wp-p" data-i18n="wp3D">总量按以下比例一次分清。流动性储备在开池前由项目方保管，开池时与累积的 BNB 一起注入池子；未售出的轮次份额转入储备。</p>
+        <ul class="pools">
+          <li><span data-i18n="wpA1L">销售轮次</span><b>700,000,000 · 70%</b></li>
+          <li><span data-i18n="wpA2L">流动性储备</span><b>150,000,000 · 15%</b></li>
+          <li><span data-i18n="wpA3L">生态</span><b>50,000,000 · 5%</b></li>
+          <li><span data-i18n="wpA4L">储备</span><b>100,000,000 · 10%</b></li>
+          <li><span data-i18n="wpA5L">团队</span><b>0 · 0%</b></li>
+        </ul>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp4T">4 · 销售轮次</h3>
+        <p class="wp-p" data-i18n="wp4D">1 手 = 100,000 SAIL。每轮在售罄或开启满 12 小时后关闭，之后由项目方开启下一轮；未售出的份额转入储备。第 1 轮另含 1,000 手免费额度，每个 Agent ID 可免费领取 1 手。</p>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th data-i18n="wpThR">轮次</th><th data-i18n="wpThP">单价（BNB / 手）</th><th data-i18n="wpThPaid">付费手数</th><th data-i18n="wpThFree">免费手数</th></tr></thead>
+          <tbody>
+            <tr><td data-i18n="wpR1">第 1 轮</td><td>0.001</td><td>2,000</td><td>1,000</td></tr>
+            <tr><td data-i18n="wpR2">第 2 轮</td><td>0.002</td><td>1,500</td><td>—</td></tr>
+            <tr><td data-i18n="wpR3">第 3 轮</td><td>0.003</td><td>1,000</td><td>—</td></tr>
+            <tr><td data-i18n="wpR4">第 4 轮</td><td>0.004</td><td>800</td><td>—</td></tr>
+            <tr><td data-i18n="wpR5">第 5 轮</td><td>0.005</td><td>700</td><td>—</td></tr>
+          </tbody>
+        </table></div>
+        <p class="wp-p" data-i18n="wp4N">每轮每钱包最多购买 10 手付费额度；价格与额度都是合约常量，部署后不可更改。</p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp5T">5 · 销售所得分配</h3>
+        <p class="wp-p" data-i18n="wp5D">每笔付费购买的 BNB 在同一笔交易里按固定比例分走：70% 留在销售合约中累积为流动性资金；10% 即时支付给推荐人；5% 作运营；15% 进储备。没有推荐人时，推荐人的 10% 改为进储备。</p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp6T">6 · 推荐规则</h3>
+        <p class="wp-p" data-i18n="wp6D">购买时填入的推荐人会在同一笔交易中即时收到付款金额的 10%（BNB），全程链上可查。要成为推荐人，需先完成官方 X 任务：关注 @SailAgents、给置顶帖点赞并转发、发一条带 $SAIL 的帖子。项目方会逐一真实核对这些任务，核对通过后推荐链接才计入推荐关系。本站推荐页可以直接生成链接并一键分享。</p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp7T">7 · 开池与 LP</h3>
+        <p class="wp-p" data-i18n="wp7D">五轮销售结束后，项目方执行开池：累积的流动性资金（销售所得的 70%）与流动性储备的 150,000,000 SAIL 在 PancakeSwap V3 以 1% 费率档建池。LP 仓位由销售合约持有（锁定），只能由项目方解锁。开池的同一时刻，SAIL 的转账与交易正式开启。</p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp8T">8 · 转账锁定</h3>
+        <p class="wp-p" data-i18n="wp8D">开池之前，SAIL 处于锁定状态：持有人之间不能互相转账，也不能在任何市场交易；代币只能由销售合约按销售与领取规则分发。这样可以保证最初的价格发现只发生在官方流动性池里。交易细则以合约代码为准。</p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp9T">9 · 安全与验证</h3>
+        <p class="wp-p" data-i18n="wp9D">两个合约的源码都已通过 Sourcify 的 exact match 验证，任何人都可以逐行核对。本站只通过浏览器钱包发起标准合约调用，永远不会索要助记词或私钥——向你索要的人都是骗子。请只信任本官网公布的合约地址。</p>
+        <p style="margin-top:14px; display:flex; flex-wrap:wrap; gap:10px">
+          <a class="btn btn-ghost small" href="https://bscscan.com/token/0x4f818743bE660eCDaE5ccFFC4d2E2494fE96F19c" target="_blank" rel="noopener" data-i18n="wpLScanT">BscScan · 代币合约</a>
+          <a class="btn btn-ghost small" href="https://bscscan.com/address/0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA" target="_blank" rel="noopener" data-i18n="wpLScanS">BscScan · 销售合约</a>
+          <a class="btn btn-ghost small" href="https://sourcify.dev/#/lookup/0x4f818743bE660eCDaE5ccFFC4d2E2494fE96F19c" target="_blank" rel="noopener" data-i18n="wpLSrcT">Sourcify · 代币</a>
+          <a class="btn btn-ghost small" href="https://sourcify.dev/#/lookup/0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA" target="_blank" rel="noopener" data-i18n="wpLSrcS">Sourcify · 销售合约</a>
+        </p>
+      </div>
+
+      <div class="wp-sec">
+        <h3 class="sub-h" data-i18n="wp10T">10 · 风险声明</h3>
+        <p class="wp-p" data-i18n="wp10D">SailAgent 是社区实验代币，不承诺任何价值、收益或流动性，价格可以归零。本白皮书与本站内容不构成投资建议。全部规则写在公开合约里，参与前请自行阅读合约源码并评估风险。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="sec-kicker" data-i18n="kContracts">合约地址 · BNB Smart Chain</div>
+    <div class="contracts">
+      <div class="contract"><span class="cname" data-i18n="cTokenN">SAIL 代币</span><div class="crow"><a class="addr" id="cToken" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copyToken" data-i18n="copyBtn">复制</button></div></div>
+      <div class="contract"><span class="cname" data-i18n="cSaleN">销售合约</span><div class="crow"><a class="addr" id="cSale" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copySale" data-i18n="copyBtn">复制</button></div></div>
+      <div class="contract"><span class="cname" data-i18n="cRegN">Agent ID 注册表</span><div class="crow"><a class="addr" id="cRegistry" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copyRegistry" data-i18n="copyBtn">复制</button></div></div>
+      <div class="contract"><span class="cname">X</span><div class="crow"><a class="addr" id="cX" href="https://x.com/SailAgents" target="_blank" rel="noopener">@SailAgents</a></div></div>
+    </div>
+    <p class="disclaimer" data-i18n="footDisc">风险提示：SailAgent 是社区实验项目。本站内容不构成投资建议，不承诺代币价值、收益或流动性。参与前请阅读合约源码，并核对地址只来自本官网。</p>
+    <p class="copyright">© 2026 SailAgent · Every agent can set sail.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js?v=111"></script>
+</body>
+</html>
