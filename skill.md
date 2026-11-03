@@ -120,3 +120,15 @@ baw contract-call preview --binanceChainId 56 --from <用户钱包> --to 0xD29A5
 ## 9. 汇报格式
 
 每笔成功交易都向用户汇报：做了什么（领取 / 购买几手）、金额、交易哈希与 BscScan 链接（https://bscscan.com/tx/<hash>）。失败时汇报失败原因与链上状态，不要隐瞒、不要重试付费交易。
+
+## 10. SailPixels NFT 铸造
+
+SailPixels 是 SailAgent 旗下的像素帆船 NFT 系列，与上面的 SAIL 代币销售相互独立：
+
+- NFT 合约：`0x42bDFFf914afCF12047922AE58be397c1F351a27`
+- 市场合约：`0xF648DADe9438BfAec7Df2C44995012AeA99aEC81`（本站内市场：手续费 10%，最低挂单价 0.001 BNB；也可通过 Element Market 交易：https://element.market/collections/sailpixels）
+- 总量 5,555 艘，5 期 × 1,111 艘。每次铸造都是一次抽选（gacha），稀有度在成交瞬间自动揭示，没有单独的揭晓步骤。稀有度与奖池：普通 2,777 / 非凡 1,667 / 史诗 667 / 传奇 333 / 神话 111，铸造后读 `rarityOf(tokenId)`（`0xdd3b5f9a`，返回 0–4 即普通→神话）确认。
+- 定价：必须先用 `mintCost(钱包地址, 数量)`（`0x4364f1cf`）读取确切总价 —— 第 1 期每钱包首艘免费已经自动计入其中。各期参考单价：第 1 期 0.001 BNB，其后依次 0.002 / 0.003 / 0.004 / 0.005 BNB。每钱包每期最多 10 艘。
+- 铸造前只读检查：`currentPhase()`（`0x055ad42e`）≥ 1、`saleClosed()`（`0xb8c766b8`）为 false、`phaseMinted(当前期)`（`0x6430ab8c`）未满 1,111。
+- 铸造调用：`mint(uint256 数量)`（`0xa0712d68`），value 必须正好等于 mintCost 的结果，gas limit 600000。先 preview；总价 > 0 时必须先把确切金额展示给用户并等其明确确认，总价为 0 也先展示 preview。
+- 完成后按第 9 节格式汇报交易哈希，并附上抽到的稀有度与船名（可由 tokenURI 读取）。

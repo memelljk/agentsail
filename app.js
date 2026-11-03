@@ -166,6 +166,8 @@
     agentSub: "No wallet connection needed here: copy one of the prompts below into your Binance Agent (Agentic Wallet) and it will run the on-chain calls for you. Every paid step must show you the exact BNB amount and wait for your confirmation.",
     agentFreeT: "Free claim only (spend no BNB)",
     agentBuyT: "Buy paid lots (your Agent must confirm the cost with you first)",
+    agentPxT: "Mint SailPixels NFTs (first ship free in Phase 1)",
+    agentPxText: "Help me mint SailPixels NFTs (SailAgent's pixel-ship NFT collection):\n1. Read-check the NFT contract 0x42bDFFf914afCF12047922AE58be397c1F351a27 on BNB Smart Chain (chainId 56): currentPhase() must be >= 1 and saleClosed() must be false. Then compute the exact total with mintCost(my wallet, quantity). In Phase 1 the first ship per wallet is free (mintCost already accounts for it); the rest cost the phase price: Phase 1 = 0.001 BNB per ship, Phases 2-5 = 0.002 / 0.003 / 0.004 / 0.005 BNB. Max 10 ships per wallet per phase.\n2. Show me the exact BNB total, clearly. If the total is > 0, execute ONLY after I explicitly confirm — never pay without my confirmation. If the total is 0 (free first ship only), still show me the preview first.\n3. Call mint(quantity) with value exactly equal to the mintCost result, gas limit 600000; preview with baw first.\n4. Afterwards send me the transaction hash and read rarityOf(new tokenId) to tell me which rarity I drew (it is revealed the moment the mint lands).",
     agentSkillT: "Install the SailAgent skill",
     agentSkillD: "One prompt installs the official SailAgent skill file into your Agent; after that it knows the contracts, the checks and the safety rules by heart.",
     agentFreeText: "Help me claim my free Round 1 lot of SailAgent (SAIL) — free claim only, do not buy anything:\n1. On BNB Smart Chain (chainId 56), confirm my wallet owns my Agent ID; agentId = uint256(keccak256(\"my handle, without the .ai suffix\")).\n2. Read-check the sale contract 0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA: currentRound() must be 1, freeClaimedByAgent(agentId) must be false, and ownerOf(agentId) on the registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F must equal my wallet.\n3. Preview claim(agentId) with baw first (value 0, gas limit 600000), show me the preview, and only execute after I confirm. Afterwards, send me the transaction hash.",
@@ -2174,6 +2176,8 @@
     if (caf) caf.addEventListener("click", function () { copyText($("agentFreeText").textContent.trim()); });
     var cab = $("copyAgentBuy");
     if (cab) cab.addEventListener("click", function () { copyText($("agentBuyText").textContent.trim()); });
+    var cpx = $("copyAgentPx");
+    if (cpx) cpx.addEventListener("click", function () { copyText($("agentPxText").textContent.trim()); });
     var csp = $("copySkillPrompt");
     if (csp) csp.addEventListener("click", function () { copyText($("skillPromptText").textContent.trim()); });
     var sxb = $("shareXBtn");

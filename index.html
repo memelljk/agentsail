@@ -370,6 +370,16 @@
       </div>
 
       <div class="card" style="margin-top:16px">
+        <h3 data-i18n="agentPxT">铸造 SailPixels NFT（第 1 期首艘免费）</h3>
+        <pre class="prompt-box" id="agentPxText" data-i18n="agentPxText">请帮我铸造 SailPixels NFT（SailAgent 的像素帆船 NFT 系列）：
+1. 只读检查 NFT 合约 0x42bDFFf914afCF12047922AE58be397c1F351a27（BNB Smart Chain，chainId 56）：currentPhase() 必须 ≥ 1、saleClosed() 必须为 false；再用 mintCost(我的钱包, 数量) 算出确切总价。第 1 期每钱包首艘免费（mintCost 会自动算对），其余按本期单价：第 1 期 0.001 BNB/艘，第 2–5 期依次 0.002 / 0.003 / 0.004 / 0.005 BNB/艘；每钱包每期最多 10 艘。
+2. 把总价用 BNB 明明白白展示给我；只要总价 > 0，必须等我明确确认后才能付款。总价为 0（只铸免费首艘）时，也先把 preview 给我看。
+3. 调用 mint(数量)，value 必须正好等于 mintCost 的结果，gas limit 600000；先用 baw preview，我确认后才 execute。
+4. 完成后把交易哈希发给我，并读取 rarityOf(新 tokenId) 告诉我抽到的稀有度（铸造即自动揭示）。</pre>
+        <p style="margin-top:10px"><button class="btn btn-ghost small tap" id="copyAgentPx" type="button" data-i18n="copyBtn">复制</button></p>
+      </div>
+
+      <div class="card" style="margin-top:16px">
         <h3 data-i18n="agentSkillT">安装 SailAgent 技能</h3>
         <p data-i18n="agentSkillD">一段指令即可把 SailAgent 官方技能文件装进你的 Agent；之后它会记住全部合约地址、检查步骤与安全规则。</p>
         <pre class="prompt-box" id="skillPromptText" data-i18n="skillPromptText">请打开并安装 SailAgent 的官方技能文件：
