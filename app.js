@@ -72,7 +72,9 @@
     pxSub: "SailPixels is SailAgent's pixel-ship NFT collection: 5,555 ships minted across 5 phases. Every mint is a gacha draw — the rarity is pulled from the remaining pool and revealed the moment the mint lands (auto reveal). In Phase 1, the first ship for each wallet is free; the rest sell at the phase price.",
     pxGalT: "Five rarities",
     pxLiveT: "Live Sale",
-    pxMintT: "Mint", pxLPhase: "Current phase", pxLPhaseMinted: "Minted this phase", pxLTotal: "Total minted", pxLPrice: "Phase price", pxLMine: "My mints this phase", pxLFree: "Phase-1 free ship", pxPhase1Info: "Phase 1 rules: your first ship is FREE. Every extra ship costs 0.001 BNB each (max 10 ships per wallet in this phase).",
+    pxMintT: "Mint", pxLPhase: "Current phase", pxLPhaseMinted: "Minted this phase", pxLTotal: "Total minted", pxLPrice: "Phase price", pxLMine: "My mints this phase", pxLFree: "Phase-1 free ship",
+    pxPhase1Info: "Phase 1 rules: your first ship is FREE. Every extra ship costs 0.001 BNB each (max 10 ships per wallet in this phase).",
+    pxPhasePaidInfo: function (p) { return "Phase " + p + " rules: every ship costs the phase price — no free ship this phase (max 10 ships per wallet)."; },
     pxQtyL: "Quantity", pxMintBtn: "Mint",
     pxMintNote: "Connect your wallet on the Buy page; once connected, the price here is priced live for your wallet.",
     pxMktT: "Market",
@@ -279,6 +281,8 @@
       pxPhaseFmt: function (r) { return "第 " + r + " / 5 期"; },
       pxNotOpen: "铸造尚未开启", pxClosed: "铸造已结束", pxPhaseFull: "本期已铸满",
       pxFreeUnused: "未使用（首艘免费）", pxFreeUsed: "已使用", pxFreeNA: "—（仅第 1 期）",
+      pxPhase1Info: "第 1 期规则：每个钱包第一艘船免费；额外的船每艘 0.001 BNB（本期每钱包最多 10 艘）。",
+      pxPhasePaidInfo: function (p) { return "第 " + p + " 期规则：每艘船按本期单价付费，本期没有免费船（每钱包最多 10 艘）。"; },
       pxSupplyL: "总量", pxPoolL: "奖池剩余",
       pxNoteNoWallet: "未连接钱包：按付费单价估算。第 1 期每钱包首艘免费，连接钱包后按合约 mintCost 实时计算确切金额。",
       pxNoteFree: "已包含第 1 期首艘免费；金额由合约 mintCost 实时计算。",
@@ -386,8 +390,10 @@
       mktFail: "Market data failed to load — try again shortly.",
       squareCopied: "Text copied — paste it into Binance Square to post",
       pxPhaseFmt: function (r) { return "Phase " + r + " / 5"; },
-      pxNotOpen: "Minting is not open yet", pxClosed: "Minting has ended", pxPhaseFull: "This phase is fully minted", pxPhase1Info: "Phase 1 rules: your first ship is FREE. Every extra ship costs 0.001 BNB each (max 10 ships per wallet in this phase).",
+      pxNotOpen: "Minting is not open yet", pxClosed: "Minting has ended", pxPhaseFull: "This phase is fully minted",
       pxFreeUnused: "Available (first ship free)", pxFreeUsed: "Used", pxFreeNA: "— (Phase 1 only)",
+      pxPhase1Info: "Phase 1 rules: your first ship is FREE. Every extra ship costs 0.001 BNB each (max 10 ships per wallet in this phase).",
+      pxPhasePaidInfo: function (p) { return "Phase " + p + " rules: every ship costs the phase price — no free ship this phase (max 10 ships per wallet)."; },
       pxSupplyL: "Supply", pxPoolL: "Left in pool",
       pxNoteNoWallet: "No wallet connected: estimated at the paid unit price. In Phase 1 the first ship per wallet is free — connect a wallet and the contract's mintCost prices your exact total live.",
       pxNoteFree: "Includes your free first Phase-1 ship; priced live by the contract's mintCost.",
@@ -1263,7 +1269,10 @@
       if (dot) dot.style.background = (px.loaded && px.phase >= 1 && !px.closed && px.phaseMinted < px.phaseSize) ? "#2ecc71" : "#7d838d";
       $("pxLivePhase").textContent = $("pxPhase").textContent;
       $("pxLiveMinted").textContent = $("pxPhaseMinted").textContent;
+      var lt = $("pxLiveTotal"); if (lt) lt.textContent = $("pxTotal").textContent;
       $("pxLivePrice").textContent = $("pxPrice").textContent;
+      var li = $("pxLiveInfo");
+      if (li && px.loaded && px.phase >= 1) li.textContent = px.phase === 1 ? t("pxPhase1Info") : t("pxPhasePaidInfo")(px.phase);
     }
     pxUpdateCost();
   }
