@@ -461,12 +461,16 @@ footer.site { margin-top: 70px; border-top: 1px solid var(--card-line); padding:
   .px-gallery, .px-mkt-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 760px) {
-  .px-mkt-grid { grid-template-columns: 1fr; }
+  .px-gallery, .px-mkt-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .px-mine-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 480px) {
-  .px-gallery { grid-template-columns: 1fr; }
-  .px-mine-grid { grid-template-columns: 1fr; }
+  .px-gallery, .px-mkt-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .px-mine-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .px-lst { padding: 9px; }
+  .px-lst-name { font-size: 13.5px; }
+  .px-price { font-size: 15px; }
+  .px-gallery > *, .px-mkt-grid > * { min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ship-stage, .wave, .bubble { animation: none !important; }
