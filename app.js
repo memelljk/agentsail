@@ -386,7 +386,7 @@
       mktFail: "Market data failed to load — try again shortly.",
       squareCopied: "Text copied — paste it into Binance Square to post",
       pxPhaseFmt: function (r) { return "Phase " + r + " / 5"; },
-      pxNotOpen: "Minting is not open yet", pxClosed: "Minting has ended", pxPhaseFull: "This phase is fully minted",
+      pxNotOpen: "Minting is not open yet", pxClosed: "Minting has ended", pxPhaseFull: "This phase is fully minted", pxPhase1Info: "Phase 1 rules: your first ship is FREE. Every extra ship costs 0.001 BNB each (max 10 ships per wallet in this phase).",
       pxFreeUnused: "Available (first ship free)", pxFreeUsed: "Used", pxFreeNA: "— (Phase 1 only)",
       pxSupplyL: "Supply", pxPoolL: "Left in pool",
       pxNoteNoWallet: "No wallet connected: estimated at the paid unit price. In Phase 1 the first ship per wallet is free — connect a wallet and the contract's mintCost prices your exact total live.",
