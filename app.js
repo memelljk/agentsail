@@ -72,7 +72,7 @@
     pxSub: "SailPixels is SailAgent's pixel-ship NFT collection: 5,555 ships minted across 5 phases. Every mint is a gacha draw — the rarity is pulled from the remaining pool and revealed the moment the mint lands (auto reveal). In Phase 1, the first ship for each wallet is free; the rest sell at the phase price.",
     pxGalT: "Five rarities",
     pxLiveT: "Live Sale",
-    pxMintT: "Mint", pxLPhase: "Current phase", pxLPhaseMinted: "Minted this phase", pxLTotal: "Total minted", pxLPrice: "Phase price", pxLMine: "My mints this phase", pxLFree: "Phase-1 free ship",
+    pxMintT: "Mint", pxLPhase: "Current phase", pxLPhaseMinted: "Minted this phase", pxLTotal: "Total minted", pxLPrice: "Phase price", pxLMine: "My mints this phase", pxLFree: "Phase-1 free ship", pxPhase1Info: "Phase 1 rules: your first ship is FREE. Every extra ship costs 0.001 BNB each (max 10 ships per wallet in this phase).",
     pxQtyL: "Quantity", pxMintBtn: "Mint",
     pxMintNote: "Connect your wallet on the Buy page; once connected, the price here is priced live for your wallet.",
     pxMktT: "Market",
