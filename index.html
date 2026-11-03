@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=114">
+<link rel="stylesheet" href="style.css?v=115">
 </head>
 <body>
 
@@ -406,8 +406,10 @@ https://sailagent.vercel.app/skill.md
         <ul class="pools">
           <li><span data-i18n="pxLPhase">当前期数</span><b id="pxLivePhase">—</b></li>
           <li><span data-i18n="pxLPhaseMinted">本期已铸造</span><b id="pxLiveMinted">—</b></li>
+          <li><span data-i18n="pxLTotal">全系列已铸造</span><b id="pxLiveTotal">—</b></li>
           <li><span data-i18n="pxLPrice">本期单价</span><b id="pxLivePrice">—</b></li>
         </ul>
+        <p class="hint" id="pxLiveInfo" data-i18n="pxPhase1Info" style="margin-top:10px">第 1 期规则：每个钱包的第一艘船免费；额外的船每艘 0.001 BNB（本期每钱包最多 10 艘）。</p>
       </div>
 
       <div class="card" id="pxMintCard" style="margin-top:22px">
@@ -423,7 +425,6 @@ https://sailagent.vercel.app/skill.md
               <li><span data-i18n="pxLFree">第 1 期免费额度</span><b id="pxFree">—</b></li>
             </ul>
             <div class="progress"><i id="pxPhaseBar"></i></div>
-            <p class="hint" data-i18n="pxPhase1Info" style="margin-top:10px">第一阶段规则：每个钱包的第一艘船免费；额外的船每艘 0.001 BNB（本阶段每钱包最多 10 艘）。</p>
           </div>
           <div>
             <label class="fld-label" data-i18n="pxQtyL">铸造数量</label>
@@ -739,6 +740,6 @@ https://sailagent.vercel.app/skill.md
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=114"></script>
+<script src="app.js?v=115"></script>
 </body>
 </html>
