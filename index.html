@@ -391,8 +391,14 @@ https://sailagent.vercel.app/skill.md
       <div class="px-hero"><img src="sailpixels/armada.webp" alt="SailPixels — the pixel fleet"></div>
       <div class="px-chips" id="pxChips"></div>
 
-      <h3 class="sub-h" data-i18n="pxGalT">五种稀有度</h3>
-      <div class="cards px-gallery" id="pxGallery"></div>
+      <div class="card" id="pxLiveCard" style="margin-top:22px">
+        <h3><span class="px-dot" id="pxLiveDot" style="background:#7d838d"></span><span data-i18n="pxLiveT">Live Sale</span> <span class="badge soon" id="pxLiveBadge">…</span></h3>
+        <ul class="pools">
+          <li><span data-i18n="pxLPhase">当前期数</span><b id="pxLivePhase">—</b></li>
+          <li><span data-i18n="pxLPhaseMinted">本期已铸造</span><b id="pxLiveMinted">—</b></li>
+          <li><span data-i18n="pxLPrice">本期单价</span><b id="pxLivePrice">—</b></li>
+        </ul>
+      </div>
 
       <div class="card" id="pxMintCard" style="margin-top:22px">
         <h3><span data-i18n="pxMintT">铸造</span> <span class="badge soon" id="pxMintBadge">…</span></h3>
@@ -451,6 +457,9 @@ https://sailagent.vercel.app/skill.md
           <p class="hint" data-i18n="pxListNote">上架前会核对持有权；若市场合约未获授权，会先请你发一笔授权交易。成交后你到手 90%。</p>
         </div>
       </div>
+
+      <h3 class="sub-h" data-i18n="pxGalT">五种稀有度</h3>
+      <div class="cards px-gallery" id="pxGallery"></div>
     </div>
   </section>
 </main>
@@ -708,6 +717,8 @@ https://sailagent.vercel.app/skill.md
       <div class="contract"><span class="cname" data-i18n="cTokenN">SAIL 代币</span><div class="crow"><a class="addr" id="cToken" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copyToken" data-i18n="copyBtn">复制</button></div></div>
       <div class="contract"><span class="cname" data-i18n="cSaleN">销售合约</span><div class="crow"><a class="addr" id="cSale" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copySale" data-i18n="copyBtn">复制</button></div></div>
       <div class="contract"><span class="cname" data-i18n="cRegN">Agent ID 注册表</span><div class="crow"><a class="addr" id="cRegistry" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copyRegistry" data-i18n="copyBtn">复制</button></div></div>
+      <div class="contract"><span class="cname" data-i18n="cPxN">SailPixels NFT</span><div class="crow"><a class="addr" id="cPixels" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copyPixels" data-i18n="copyBtn">复制</button></div></div>
+      <div class="contract"><span class="cname" data-i18n="cPxMktN">SailPixels 市场合约</span><div class="crow"><a class="addr" id="cPixelsMkt" href="#" target="_blank" rel="noopener">—</a><button type="button" class="copy-btn" id="copyPixelsMkt" data-i18n="copyBtn">复制</button></div></div>
       <div class="contract"><span class="cname">X</span><div class="crow"><a class="addr" id="cX" href="https://x.com/SailAgents" target="_blank" rel="noopener">@SailAgents</a></div></div>
     </div>
     <p class="disclaimer" data-i18n="footDisc">风险提示：SailAgent 是社区实验项目。本站内容不构成投资建议，不承诺代币价值、收益或流动性。参与前请阅读合约源码，并核对地址只来自本官网。</p>
@@ -717,6 +728,6 @@ https://sailagent.vercel.app/skill.md
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=112"></script>
+<script src="app.js?v=113"></script>
 </body>
 </html>

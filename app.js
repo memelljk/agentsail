@@ -71,6 +71,7 @@
     pxKicker: "SailPixels · NFT Collection", pxTitle: "5,555 pixel ships. Your draw picks yours.",
     pxSub: "SailPixels is SailAgent's pixel-ship NFT collection: 5,555 ships minted across 5 phases. Every mint is a gacha draw — the rarity is pulled from the remaining pool and revealed the moment the mint lands (auto reveal). In Phase 1, the first ship for each wallet is free; the rest sell at the phase price.",
     pxGalT: "Five rarities",
+    pxLiveT: "Live Sale",
     pxMintT: "Mint", pxLPhase: "Current phase", pxLPhaseMinted: "Minted this phase", pxLTotal: "Total minted", pxLPrice: "Phase price", pxLMine: "My mints this phase", pxLFree: "Phase-1 free ship",
     pxQtyL: "Quantity", pxMintBtn: "Mint",
     pxMintNote: "Connect your wallet on the Buy page; once connected, the price here is priced live for your wallet.",
@@ -170,7 +171,7 @@
     agentFreeText: "Help me claim my free Round 1 lot of SailAgent (SAIL) — free claim only, do not buy anything:\n1. On BNB Smart Chain (chainId 56), confirm my wallet owns my Agent ID; agentId = uint256(keccak256(\"my handle, without the .ai suffix\")).\n2. Read-check the sale contract 0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA: currentRound() must be 1, freeClaimedByAgent(agentId) must be false, and ownerOf(agentId) on the registry 0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F must equal my wallet.\n3. Preview claim(agentId) with baw first (value 0, gas limit 600000), show me the preview, and only execute after I confirm. Afterwards, send me the transaction hash.",
     agentBuyText: "Help me buy SailAgent (SAIL) — paid purchase, you must confirm the amount with me first:\n1. Read currentRound() and priceOf(current round) on the sale contract 0xD29A5c98ac9eee53d41A9561B3320832f7ECd6eA and compute the total = lots x round price (Round 1 is 0.001 BNB per lot). Show me that exact BNB total, clearly.\n2. The call is mint(lots, referrerWallet) — use the zero address 0x0000000000000000000000000000000000000000 when there is no referrer; value must equal the total exactly; gas limit 600000.\n3. Preview with baw, show me the exact amount, and execute ONLY after I explicitly confirm — never pay without my confirmation. Afterwards, send me the transaction hash.",
     skillPromptText: "Please fetch and install the official SailAgent skill file:\nhttps://sailagent.vercel.app/skill.md\nSave it as one of your skills, then follow it strictly to help me join SailAgent (free claim / paid purchase): preview every transaction first; before any payment, show me the exact BNB amount and wait for my confirmation; trust only the two official contract addresses written in skill.md.",
-    kContracts: "Contract Addresses · BNB Smart Chain", cTokenN: "SAIL token", cSaleN: "Sale contract", cRegN: "Agent ID registry",
+    kContracts: "Contract Addresses · BNB Smart Chain", cTokenN: "SAIL token", cSaleN: "Sale contract", cRegN: "Agent ID registry", cPxN: "SailPixels NFT", cPxMktN: "SailPixels market",
     footDisc: "Risk notice: SailAgent is a community experiment. Nothing here is investment advice; no token value, return or liquidity is promised. Read the contract source before joining, and trust addresses only from this official site.",
     kWp: "Whitepaper", wpTitle: "The SailAgent Whitepaper",
     wpSub: "This whitepaper sets out SailAgent's (SAIL) token rules, sale mechanics and pool-launch arrangement. Every number matches the contracts deployed on BNB Smart Chain; if anything differs, the contract code prevails.",
@@ -1253,6 +1254,15 @@
     $("pxFree").textContent = !account ? "—" : (px.phase === 1 && pxW.addr === account ? (pxW.freeUsed ? t("pxFreeUsed") : t("pxFreeUnused")) : (px.phase > 1 ? t("pxFreeNA") : "—"));
     var bar = $("pxPhaseBar");
     if (bar) bar.style.width = px.loaded && px.phase >= 1 && px.phaseSize > 0n ? (Number(px.phaseMinted * 10000n / px.phaseSize) / 100).toFixed(1) + "%" : "0%";
+    var lb = $("pxLiveBadge");
+    if (lb) {
+      lb.className = badge.className; lb.textContent = badge.textContent;
+      var dot = $("pxLiveDot");
+      if (dot) dot.style.background = (px.loaded && px.phase >= 1 && !px.closed && px.phaseMinted < px.phaseSize) ? "#2ecc71" : "#7d838d";
+      $("pxLivePhase").textContent = $("pxPhase").textContent;
+      $("pxLiveMinted").textContent = $("pxPhaseMinted").textContent;
+      $("pxLivePrice").textContent = $("pxPrice").textContent;
+    }
     pxUpdateCost();
   }
 
@@ -2170,7 +2180,7 @@
     if (sxb) sxb.addEventListener("click", shareToX);
     var ssb = $("shareSquareBtn");
     if (ssb) ssb.addEventListener("click", shareToSquare);
-    [["copyToken", CONFIG.TOKEN], ["copySale", CONFIG.SALE], ["copyRegistry", CONFIG.REGISTRY]].forEach(function (pair) {
+    [["copyToken", CONFIG.TOKEN], ["copySale", CONFIG.SALE], ["copyRegistry", CONFIG.REGISTRY], ["copyPixels", CONFIG.PIXELS], ["copyPixelsMkt", CONFIG.PIXELS_MKT]].forEach(function (pair) {
       var b = $(pair[0]);
       if (b) b.addEventListener("click", function () {
         copyText(pair[1]);
@@ -2183,7 +2193,7 @@
     });
     setInterval(paintCountdown, 1000);
     // footer contract addresses: show + link to BscScan; click also copies
-    [["cToken", CONFIG.TOKEN], ["cSale", CONFIG.SALE], ["cRegistry", CONFIG.REGISTRY]].forEach(function (pair) {
+    [["cToken", CONFIG.TOKEN], ["cSale", CONFIG.SALE], ["cRegistry", CONFIG.REGISTRY], ["cPixels", CONFIG.PIXELS], ["cPixelsMkt", CONFIG.PIXELS_MKT]].forEach(function (pair) {
       var el = $(pair[0]); if (!el) return;
       el.textContent = pair[1];
       el.href = "https://bscscan.com/address/" + pair[1];
